@@ -27,4 +27,4 @@ require('./services/tweets-service')(app);
 
 require('./services/profile-service')(app);
 
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
