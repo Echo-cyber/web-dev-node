@@ -1,0 +1,14 @@
+{
+  "firstName":"John",
+  "lastName": "Lennon",
+  "handle": "lennonjohn",
+  "profilePicture": "../../images/profile.png",
+  "bannerPicture": "../../images/profilebg.jpg",
+  "bio": "Singer, songwriter, musician and peace activist who achieved worldwide fame as the founder of the Beatles. ",
+  "website": "youtube.com/webdevtv",
+  "location": "Liverpool, United Kingdom",
+  "dateOfBirth": "1940-09-10",
+  "dateJoined": "4/1980",
+  "followingCount": 312,
+  "followersCount": 190
+}
