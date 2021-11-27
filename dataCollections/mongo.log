@@ -1,0 +1,58 @@
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use webdev
+switched to db webdev
+>  db.movies.insert({title: 'Aliens', rating: 4.5})
+WriteResult({ "nInserted" : 1 })
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+webdev  0.000GB
+> db.movies.insert({title: 'Terminator', rating: 4.8})
+WriteResult({ "nInserted" : 1 })
+> db.movies.insert({title: 'Avatar', rating: 4.7})
+WriteResult({ "nInserted" : 1 })
+> db.movies.insert({title: 'Dune', rating: 4.9})
+WriteResult({ "nInserted" : 1 })
+> db.movies.find()
+{ "_id" : ObjectId("619b251be1c4780834cfb5f6"), "title" : "Aliens", "rating" : 4.5 }
+{ "_id" : ObjectId("619b256be1c4780834cfb5f7"), "title" : "Terminator", "rating" : 4.8 }
+{ "_id" : ObjectId("619b257be1c4780834cfb5f8"), "title" : "Avatar", "rating" : 4.7 }
+{ "_id" : ObjectId("619b258be1c4780834cfb5f9"), "title" : "Dune", "rating" : 4.9 }
+> db.movies.find({"_id" : ObjectId("619b251be1c4780834cfb5f6")})
+{ "_id" : ObjectId("619b251be1c4780834cfb5f6"), "title" : "Aliens", "rating" : 4.5 }
+> db.movies.find({title:'Aliens'})
+{ "_id" : ObjectId("619b251be1c4780834cfb5f6"), "title" : "Aliens", "rating" : 4.5 }
+> db.movies.find().pretty()
+{
+	"_id" : ObjectId("619b251be1c4780834cfb5f6"),
+	"title" : "Aliens",
+	"rating" : 4.5
+}
+{
+	"_id" : ObjectId("619b256be1c4780834cfb5f7"),
+	"title" : "Terminator",
+	"rating" : 4.8
+}
+{
+	"_id" : ObjectId("619b257be1c4780834cfb5f8"),
+	"title" : "Avatar",
+	"rating" : 4.7
+}
+{
+	"_id" : ObjectId("619b258be1c4780834cfb5f9"),
+	"title" : "Dune",
+	"rating" : 4.9
+}
+> db.movies.updateOne({title: 'Avatar'},{$set: {rating: 4.9}},{upsert:true})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.movies.deleteOne({_id:ObjectId("619b251be1c4780834cfb5f6")})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.movies.find()
+{ "_id" : ObjectId("619b256be1c4780834cfb5f7"), "title" : "Terminator", "rating" : 4.8 }
+{ "_id" : ObjectId("619b257be1c4780834cfb5f8"), "title" : "Avatar", "rating" : 4.9 }
+{ "_id" : ObjectId("619b258be1c4780834cfb5f9"), "title" : "Dune", "rating" : 4.9 }
+>
